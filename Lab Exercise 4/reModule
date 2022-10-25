@@ -1,0 +1,7 @@
+import re
+txt = "The rain in color"
+x = re.search("colou?r", txt)
+if (x):
+    print("YES! We have a match!")
+else:
+    print("No match")

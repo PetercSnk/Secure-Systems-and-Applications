@@ -1,0 +1,25 @@
+import hashlib
+import hmac
+digest = hashlib.md5('hello'.encode('utf-8')).digest()
+hexDigest = hashlib.md5('hello'.encode('utf-8')).hexdigest()
+print("digest: ", digest)
+print("hexDigest: ", hexDigest)
+# the b before hello encodes hello into bytes
+# result = hashlib.md5(b"hello")
+# print(result.digest())
+
+# update method
+shaObject = hashlib.sha256()
+# update function concatenates, below will end up as helloworld
+shaObject.update("hello".encode("utf-8"))
+shaObject.update("world".encode("utf-8"))
+print(shaObject.hexdigest())
+print(type(shaObject.hexdigest())) # string type
+print(shaObject.digest_size) 
+print(shaObject.block_size)
+
+# hmac
+message = b"hello world"
+key = b"secret key"
+h = hmac.new(key, message, digestmod="SHA256")
+print("hmac", h.hexdigest())
